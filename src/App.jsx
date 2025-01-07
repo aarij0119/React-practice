@@ -1,16 +1,16 @@
 import React, { useContext } from 'react'
-import { UserContext } from './Context/User'
-
+import { BrowserRouter as Router,Routes,Route } from 'react-router-dom'
+import Login from './Context/Components/Login'
 
 
 const App = () => {
-  const user = useContext(UserContext);
-  console.log(user)
+  
   return (
-    
-    <div>App
-      <h1>UserName</h1>
-    </div>
+    <Router>
+      <Routes>
+        <Route path='/' element={<Login />} ></Route>
+      </Routes>
+    </Router>
   )
 }
 
