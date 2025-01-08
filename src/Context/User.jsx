@@ -1,18 +1,14 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState } from 'react'
 
 const UserContext = createContext();
-const UserProvider = ({ children }) => {
-    const [name, setName] = useState('');
+const UserProvider = ({children}) => {
+    const [username, setUsername] = useState('')
+    if(username) return console.log("Coming from Cntext", username)
+  return (
+    <UserContext.Provider value={{username,setUsername}}>
+        {children}
+    </UserContext.Provider>
+  )
+}
 
-    if (name) {
-        console.log("coming from context", name)
-    }
-    return (
-        <UserContext.Provider value={{ name, setName }}>
-            {children}
-        </UserContext.Provider>
-    );
-};
-
-export { UserContext };
-export default UserProvider;
+export {UserProvider, UserContext}

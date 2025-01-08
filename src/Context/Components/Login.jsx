@@ -1,25 +1,27 @@
-import React, { useContext, useState } from 'react'
-import { UserContext } from '../User'
+import React, { useContext, useState } from 'react';
+import { UserContext } from '../User';
+
+
 
 const Login = () => {
- const data =  useContext(UserContext);
-
- const [username,setUsername] = useState('');
- const submithandler = (e) =>{
-    e.preventDefault();
-    if(username){
-        data.setName(username)
+  const {setUsername} = useContext(UserContext);
+  const [name,setName] = useState('');
+  const Clickedhandler = (e) =>{
+    e.preventDefault()
+    if(name){
+      
+      console.log('set')
+      setUsername(name)
+      console.log("Done")
     }
-    console.log(username)
-    console.log("Done");
-    setUsername('')
- }
+  }
   return (
-    <div>Login
-        <input onChange={(e)=>setUsername(e.target.value) } type='text'></input>
-        <button onClick={submithandler}>Submit</button>
-    </div>
-  )
-}
+    <>
+      <div>Login</div>
+      <input onChange={(e)=> setName(e.target.value)} value={name} type="text" />
+      <button onClick={Clickedhandler}>Submit</button>
+    </>
+  );
+};
 
-export default Login
+export default Login;
